@@ -1,0 +1,27 @@
+## Spring Boot Configuration
+server:
+    contextPath: /api
+    
+spring:
+    # Datasource configuration
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+        
+    # JPA specific configuration
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        database: H2
+        hibernate:
+            ddl-auto: none
+        generate-ddl: false
+        # Register OpenEntityManagerInViewInterceptor. Binds a JPA EntityManager to the thread for the entire processing of the request.
+        open-in-view: true
+        properties:
+            hibernate.enable_lazy_load_no_trans: true
+       
+    # Database specific configuration
+    h2: 
+        # Enable H2 web console
+        console: 
+            enabled: true
